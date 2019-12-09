@@ -43,11 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\Objects\Container\CoolableContainer.cs" />
+    <Compile Include="Logic\Objects\Container\IContainer.cs" />
+    <Compile Include="Logic\Objects\Container\NormalContainer.cs" />
+    <Compile Include="Logic\Objects\Row.cs" />
+    <Compile Include="Logic\Objects\Ship.cs" />
+    <Compile Include="Logic\Objects\Stack.cs" />
+    <Compile Include="Logic\Objects\Container\ValuableContainer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
