@@ -8,9 +8,10 @@ namespace Containervervoer.Logic.Objects
 {
     public interface IContainer
     {
-        bool allowTopStack { get; set; }
-        int maxTopStackWeight { get; set; }
-        int maxWeight { get; set; }
+        bool allowTopStack { get; }
+        int maxTopStackWeight { get; }
+        int weight { get; set; }
+        int maxWeight { get; }
         List<Row> allowedRows { get; set; }
     }
 }

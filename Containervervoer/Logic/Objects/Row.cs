@@ -8,8 +8,34 @@ namespace Containervervoer.Logic.Objects
 {
     public class Row
     {
-        int length;
+        public int length;
         List<Stack> stacks;
-        bool isCoolableRow;
+        public bool isCoolableRow;
+
+        public Row()
+        {
+            this.stacks = new List<Stack>();
+            for(int i = 0; i < length; i++)
+            {
+                if (this.isCoolableRow == true)
+                {
+                    stacks.Add(new Stack() { isCoolableStack = true });
+                }
+                else
+                {
+                    stacks.Add(new Stack());
+                }
+            }
+        }
+
+        public int GetTotalRowWeight()
+        {
+            int weight = 0;
+            foreach(Stack stack in stacks)
+            {
+                weight += stack.GetTotalStackWeight();
+            }
+            return weight;
+        }
     }
 }

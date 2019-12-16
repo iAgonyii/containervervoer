@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Containervervoer.Logic.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,20 @@ namespace Containervervoer
     {
         static void Main(string[] args)
         {
+            int length = 0;
+            int width = 0;
+            Console.WriteLine("Enter ship length");
+            length = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter ship width");
+            width = Convert.ToInt32(Console.ReadLine());
+
+            Ship ship = new Ship(length, width);
+
+            ship.PlaceAllContainers();
+
+
+
+            Console.ReadLine();
         }
     }
 }
