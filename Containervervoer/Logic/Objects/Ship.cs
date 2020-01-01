@@ -8,7 +8,7 @@ namespace Containervervoer.Logic.Objects
 {
     public class Ship
     {
-        List<Row> rows;
+        public List<Row> rows;
         public int maxWeight;
         public int minWeight;
         int totalContainerweight;
@@ -22,13 +22,42 @@ namespace Containervervoer.Logic.Objects
             {
                 if(i == 0)
                 {
-                    rows.Add(new Row() { length = width });
+                    rows.Add(new Row(width, true, true, i));
+                }
+                else if(i == length - 1)
+                {
+                    rows.Add(new Row(width, false, true, i));
                 }
                 else
                 {
-                    rows.Add(new Row() { length = width, isCoolableRow = true });
+                    rows.Add(new Row(width, false, false, i));
                 }
 
+            }
+        }
+
+        public void PlaceAllContainers(List<IContainer> containers)
+        {
+            if(TotalContainerWeightPasses(containers))
+            {
+
+            }
+        }
+
+        private bool TotalContainerWeightPasses(List<IContainer> containers)
+        {
+            int weight = 0;
+            foreach(IContainer container in containers)
+            {
+                weight += container.weight;
+            }
+            if (weight >= minWeight && weight <= maxWeight)
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("The total weight of containers is not within requirement bounds");
             }
         }
 

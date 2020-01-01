@@ -1,0 +1,17 @@
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\obj\Debug\UnitTests.csprojAssemblyReference.cache
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\obj\Debug\UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Containervervoer.exe
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Containervervoer.pdb
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Containervervoer.exe.config
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\obj\Debug\UnitTests.csproj.CopyComplete
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\UnitTests\obj\Debug\UnitTests.pdb

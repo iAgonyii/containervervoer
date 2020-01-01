@@ -20,7 +20,14 @@ namespace Containervervoer
 
             Ship ship = new Ship(length, width);
 
-            ship.PlaceAllContainers();
+            try
+            {
+                ship.PlaceAllContainers(new List<IContainer>());
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
 
 

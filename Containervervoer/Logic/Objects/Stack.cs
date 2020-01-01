@@ -13,15 +13,21 @@ namespace Containervervoer.Logic.Objects
         int positionInRow;
         bool valuableContainerInStack;
         public bool isCoolableStack;
+        public bool isValuableStack;
 
-        public Stack()
+        public Stack(bool coolable, bool valuable)
         {
+            this.isValuableStack = valuable;
+            this.isCoolableStack = coolable;
             this.containersInStack = new List<IContainer>();
         }
 
         public void PlaceContainer(IContainer container)
         {
-            this.containersInStack.Add(container);
+            if (CanContainerBePlaced(container))
+            {
+                this.containersInStack.Add(container);
+            }
         }
 
         public int GetTotalStackWeight()
@@ -48,12 +54,51 @@ namespace Containervervoer.Logic.Objects
 
         private bool ContainerIsSuitable(IContainer container)
         {
-            throw new NotImplementedException();
+            if(container is CoolableContainer)
+            {
+                if(isCoolableStack == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            else if(container is ValuableContainer)
+            {
+                if (isCoolableStack == true)
+                {
+                    return true;
+                }
+                else if (isValuableStack == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            else
+            {
+                return true;
+            }
         }
 
         private bool StackWontOverload(IContainer container)
         {
-            throw new NotImplementedException();
+            int currentWeight = GetTotalStackWeight();
+            if(currentWeight + container.weight <= maxWeight)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
