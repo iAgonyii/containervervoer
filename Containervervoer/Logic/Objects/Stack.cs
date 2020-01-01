@@ -8,7 +8,7 @@ namespace Containervervoer.Logic.Objects
 {
     public class Stack
     {
-        const int maxWeight = 150000;
+        int maxWeight = 150;
         List<IContainer> containersInStack;
         int positionInRow;
         bool valuableContainerInStack;
@@ -91,7 +91,7 @@ namespace Containervervoer.Logic.Objects
         private bool StackWontOverload(IContainer container)
         {
             int currentWeight = GetTotalStackWeight();
-            if(currentWeight + container.weight <= maxWeight)
+            if(currentWeight + container.weight <= this.maxWeight)
             {
                 return true;
             }

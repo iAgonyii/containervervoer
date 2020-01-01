@@ -18,13 +18,13 @@ namespace Containervervoer.Logic.Objects
             this.rows = new List<Row>();
             this.maxWeight = (length * width) * 150;
             this.minWeight = maxWeight / 2;
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     rows.Add(new Row(width, true, true, i));
                 }
-                else if(i == length - 1)
+                else if (i == length - 1)
                 {
                     rows.Add(new Row(width, false, true, i));
                 }
@@ -38,16 +38,19 @@ namespace Containervervoer.Logic.Objects
 
         public void PlaceAllContainers(List<IContainer> containers)
         {
-            if(TotalContainerWeightPasses(containers))
+            if (TotalContainerWeightPasses(containers))
             {
-
+                foreach(IContainer container in containers)
+                {
+                    GetAvailableStack(container).PlaceContainer(container);
+                }
             }
         }
 
         private bool TotalContainerWeightPasses(List<IContainer> containers)
         {
             int weight = 0;
-            foreach(IContainer container in containers)
+            foreach (IContainer container in containers)
             {
                 weight += container.weight;
             }
@@ -61,10 +64,28 @@ namespace Containervervoer.Logic.Objects
             }
         }
 
+        private Stack GetAvailableStack(IContainer container)
+        {
+            foreach (Row row in rows)
+            {
+                foreach (Stack stack in row.stacks)
+                {
+                    if (stack.CanContainerBePlaced(container))
+                    {
+                        return stack;
+                    }
+                }
+
+            }
+
+            // What should we return if there is no spot available on the ship?
+            return null;
+        }
+
         public int GetTotalWeight()
         {
             int weight = 0;
-            foreach(Row row in rows)
+            foreach (Row row in rows)
             {
                 weight += row.GetTotalRowWeight();
             }

@@ -20,14 +20,26 @@ namespace Containervervoer
 
             Ship ship = new Ship(length, width);
 
-            try
+            List<IContainer> containers = new List<IContainer>()
             {
-                ship.PlaceAllContainers(new List<IContainer>());
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+                new CoolableContainer() { weight = 26 },
+                new CoolableContainer() { weight = 26 },
+                new CoolableContainer() { weight = 26 },
+                new CoolableContainer() { weight = 26 },
+                new CoolableContainer() { weight = 26 },
+                new CoolableContainer() { weight = 26 },
+                new NormalContainer() { weight = 26 },
+                new ValuableContainer() { weight = 26 },
+            };
+
+           // try
+           // {
+                ship.PlaceAllContainers(containers);
+           // }
+            //catch(Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
 
 
 

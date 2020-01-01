@@ -8,11 +8,11 @@ namespace Containervervoer.Logic.Objects
 {
     class ValuableContainer: IContainer
     {
-        int _weight = 4000;
+        int _weight = 4;
         public bool allowTopStack { get { return false; } }
         public int maxTopStackWeight { get { return 0; } }
         public int weight { get { return this._weight; } set { this._weight += value; } }
-        public int maxWeight { get { return 30000; } }
+        public int maxWeight { get { return 30; } }
         public List<Row> allowedRows { get; set; }
     }
 }
