@@ -1,2 +1,0 @@
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\i\UnitTests\Debug\UnitTests.csprojAssemblyReference.cache
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\i\UnitTests\Debug\UnitTests.csproj.CoreCompileInputs.cache

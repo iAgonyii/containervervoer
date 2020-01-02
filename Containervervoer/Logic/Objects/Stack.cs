@@ -9,7 +9,7 @@ namespace Containervervoer.Logic.Objects
     public class Stack
     {
         int maxWeight = 150;
-        List<IContainer> containersInStack;
+        public List<IContainer> containersInStack;
         int positionInRow;
         bool valuableContainerInStack;
         public bool isCoolableStack;

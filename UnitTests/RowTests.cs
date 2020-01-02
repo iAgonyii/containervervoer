@@ -14,7 +14,7 @@ namespace UnitTests
         [TestMethod]
         public void CreatingRowMakesStacksForLength()
         {
-            Row row = new Row(4, false);
+            Row row = new Row(4, false, false, 1);
             int expected = 4;
             int actual = row.stacks.Count;
 
@@ -24,14 +24,27 @@ namespace UnitTests
         [TestMethod]
         public void CreatingCoolRowMakesCoolStacksForLength()
         {
-            Row row = new Row(4, true);
+            Row row = new Row(4, true, false,  1);
             List<Stack> expected = new List<Stack>()
             {
-                new Stack(true), new Stack(true), new Stack(true), new Stack(true),
+                new Stack(true, false), new Stack(true, false), new Stack(true, false), new Stack(true, false),
             };
             List<Stack> actual = row.stacks;
 
             Assert.AreEqual(actual[0].isCoolableStack, expected[0].isCoolableStack);
+        }
+
+        [TestMethod]
+        public void CreatingValuableRowMakesValuableStacksForLength()
+        {
+            Row row = new Row(4, true, true, 1);
+            List<Stack> expected = new List<Stack>()
+            {
+                new Stack(true, true), new Stack(true, true), new Stack(true, true), new Stack(true, true),
+            };
+            List<Stack> actual = row.stacks;
+
+            Assert.AreEqual(actual[0].isValuableStack, expected[0].isValuableStack);
         }
     }
 }
