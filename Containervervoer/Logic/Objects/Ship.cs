@@ -91,5 +91,46 @@ namespace Containervervoer.Logic.Objects
             }
             return weight;
         }
+
+        private int[] GetHalfWeights()
+        {
+            int frontWeight = 0;
+            int backWeight = 0;
+
+            double rowsDivBy2 = rows.Count / 2;
+            if(rowsDivBy2 % 1 == 0)
+            {
+                for(int i = 0; i < rowsDivBy2; i++)
+                {
+                    frontWeight += rows[i].GetTotalRowWeight();
+                    backWeight += rows[i + (int)rowsDivBy2].GetTotalRowWeight();
+                }
+            }
+            else
+            {
+                int middlerow = rows.Count / 2;
+                int halfWeightOfMiddleRow = rows[middlerow].GetTotalRowWeight() / 2;
+
+                for(int i = 0; i < rows.Count; i++)
+                {
+                    if (i == middlerow)
+                    {
+                        frontWeight += halfWeightOfMiddleRow;
+                        backWeight += halfWeightOfMiddleRow;
+                    }
+                    else if (i < middlerow)
+                    {
+                        frontWeight += rows[i].GetTotalRowWeight();
+                    }
+                    else
+                    {
+                        backWeight += rows[i].GetTotalRowWeight();
+                    }
+                }
+            }
+
+            int[] weights = { frontWeight, backWeight };
+            return weights;
+        }
     }
 }

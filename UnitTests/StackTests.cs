@@ -13,7 +13,8 @@ namespace UnitTests
         [TestMethod]
         public void test()
         {
-
+            int half = 9 / 2;
+            Assert.AreEqual(3,half);
         }
     }
 }
