@@ -89,11 +89,11 @@ namespace UnitTests
             Ship ship = new Ship(4, 2);
             List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
             ship.PlaceAllContainers(containers);
-            int[] halfweight = { 700, 500 };
+            int[] halfweight = { 100, 1100};
 
             bool inbounds = ship.HalfWeightsWithinBounds(halfweight);
 
-            Assert.IsTrue(inbounds);
+            Assert.IsFalse(inbounds);
         }
 
 

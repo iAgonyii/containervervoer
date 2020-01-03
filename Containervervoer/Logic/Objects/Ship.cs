@@ -66,17 +66,28 @@ namespace Containervervoer.Logic.Objects
 
         private Stack GetAvailableStack(IContainer container)
         {
-            foreach (Row row in rows)
-            {
-                foreach (Stack stack in row.stacks)
+           // if (container is CoolableContainer || HalfWeightsWithinBounds(GetHalfWeights()))
+           // {
+                foreach (Row row in rows)
                 {
-                    if (stack.CanContainerBePlaced(container))
+                    foreach (Stack stack in row.stacks)
                     {
-                        return stack;
+                        if (stack.CanContainerBePlaced(container))
+                        {
+                            return stack;
+                        }
                     }
-                }
 
-            }
+                }
+            // }
+            // else
+            // {
+            // Search for a stack on the other half of the ship.
+
+            // Get the row with the least amount of weight and get the stack in the row with least weight
+            //Row row = rows.OrderByDescending(r => r.GetTotalRowWeight()).Last();
+            //Stack stack = row.stacks.OrderByDescending(s => s.GetTotalStackWeight()).Last();
+            // }
 
             // What should we return if there is no spot available on the ship?
             return null;
