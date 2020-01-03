@@ -67,7 +67,33 @@ namespace UnitTests
 
             int[] halfWeights = ship.GetHalfWeights();
 
-            Assert.AreEqual(601, halfWeights[0]);
+            Assert.AreEqual(600, halfWeights[0]);
+        }
+
+        [TestMethod]
+        public void HalfWeightWithinBounds()
+        {
+            Ship ship = new Ship(4, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            ship.PlaceAllContainers(containers);
+            int[] halfweight = { 700, 500 };
+
+            bool inbounds = ship.HalfWeightsWithinBounds(halfweight);
+
+            Assert.IsTrue(inbounds);
+        }
+
+        [TestMethod]
+        public void HalfWeightNotWithinBounds()
+        {
+            Ship ship = new Ship(4, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            ship.PlaceAllContainers(containers);
+            int[] halfweight = { 700, 500 };
+
+            bool inbounds = ship.HalfWeightsWithinBounds(halfweight);
+
+            Assert.IsTrue(inbounds);
         }
 
 

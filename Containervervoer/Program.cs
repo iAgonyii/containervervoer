@@ -21,12 +21,12 @@ namespace Containervervoer
 
             Ship ship = new Ship(length, width);
 
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 10, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
 
            // try
            // {
             ship.PlaceAllContainers(containers);
-            ship.GetHalfWeights();
+            ship.HalfWeightsWithinBounds(ship.GetHalfWeights());
            // }
             //catch(Exception e)
             //{

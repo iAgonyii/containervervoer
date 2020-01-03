@@ -92,6 +92,24 @@ namespace Containervervoer.Logic.Objects
             return weight;
         }
 
+        public bool HalfWeightsWithinBounds(int[] halfweights)
+        {
+            int frontWeight = halfweights[0];
+            int backWeight = halfweights[1];
+
+            double frontPercentage = (double)frontWeight / (double)GetTotalWeight() * 100.0;
+            double backPercentage = (double)backWeight / (double)GetTotalWeight() * 100.0;
+
+            if(frontPercentage > 60 || frontPercentage < 40 || backPercentage > 60 || backPercentage < 40)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        } 
+
         public int[] GetHalfWeights()
         {
             int frontWeight = 0;
