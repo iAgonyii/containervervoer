@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Containervervoer.Logic.Objects
 {
-    class ValuableContainer: IContainer
+    public class ValuableContainer: IContainer
     {
         int _weight = 4;
         public bool allowTopStack { get { return false; } }

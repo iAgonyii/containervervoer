@@ -1,4 +1,5 @@
-﻿using Containervervoer.Logic.Objects;
+﻿using Containervervoer.Logic;
+using Containervervoer.Logic.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +21,12 @@ namespace Containervervoer
 
             Ship ship = new Ship(length, width);
 
-            List<IContainer> containers = new List<IContainer>()
-            {
-                new CoolableContainer() { weight = 26 },
-                new CoolableContainer() { weight = 26 },
-                new CoolableContainer() { weight = 26 },
-                new CoolableContainer() { weight = 26 },
-                new CoolableContainer() { weight = 26 },
-                new CoolableContainer() { weight = 26 },
-                new NormalContainer() { weight = 26 },
-                new ValuableContainer() { weight = 26 },
-            };
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 10, 10);
 
            // try
            // {
-                ship.PlaceAllContainers(containers);
+            ship.PlaceAllContainers(containers);
+            ship.GetHalfWeights();
            // }
             //catch(Exception e)
             //{

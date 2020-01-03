@@ -92,12 +92,12 @@ namespace Containervervoer.Logic.Objects
             return weight;
         }
 
-        private int[] GetHalfWeights()
+        public int[] GetHalfWeights()
         {
             int frontWeight = 0;
             int backWeight = 0;
 
-            double rowsDivBy2 = rows.Count / 2;
+            double rowsDivBy2 = rows.Count / 2.0;
             if(rowsDivBy2 % 1 == 0)
             {
                 for(int i = 0; i < rowsDivBy2; i++)

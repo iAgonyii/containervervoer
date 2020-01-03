@@ -1,4 +1,5 @@
-﻿using Containervervoer.Logic.Objects;
+﻿using Containervervoer.Logic;
+using Containervervoer.Logic.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace UnitTests
         public void PlaceAllContainersOn2x2Normal()
         {
             Ship ship = new Ship(2, 2);
-            List<IContainer> containers = MakeFullNormalContainers(20);
+            List<IContainer> containers = ContainerFactory.MakeContainers(0,20,0);
             ship.PlaceAllContainers(containers);
 
             // The last stack has 5 containers, meaning all other stacks on the ship have 5 too.
@@ -43,15 +44,32 @@ namespace UnitTests
 
         }
 
-        private List<IContainer> MakeFullNormalContainers(int i)
+        [TestMethod]
+        public void GetHalfWeightForFull3x2Ship()
         {
-            List<IContainer> containers = new List<IContainer>();
-            for(int x = 0; x < i; x++)
-            {
-                containers.Add(new NormalContainer() { weight = 24 });
-            }
-            return containers;
+            Ship ship = new Ship(3, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 10, 10);
+
+            ship.PlaceAllContainers(containers);
+
+            int[] halfWeights = ship.GetHalfWeights();
+
+            Assert.AreEqual(450, halfWeights[0]);
         }
+
+        [TestMethod]
+        public void GetHalfWeightForFull4x2Ship()
+        {
+            Ship ship = new Ship(4, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+
+            ship.PlaceAllContainers(containers);
+
+            int[] halfWeights = ship.GetHalfWeights();
+
+            Assert.AreEqual(601, halfWeights[0]);
+        }
+
 
     }
 }
