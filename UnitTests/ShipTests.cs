@@ -36,7 +36,7 @@ namespace UnitTests
         public void PlaceAllContainersOn2x2Normal()
         {
             Ship ship = new Ship(2, 2);
-            List<IContainer> containers = ContainerFactory.MakeContainers(0,20,0);
+            List<IContainer> containers = ContainerFactory.MakeContainers(0,0,20);
             ship.PlaceAllContainers(containers);
 
             // The last stack has 5 containers, meaning all other stacks on the ship have 5 too.
@@ -48,7 +48,7 @@ namespace UnitTests
         public void GetHalfWeightForFull3x2Ship()
         {
             Ship ship = new Ship(3, 2);
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 10, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 8, 18);
 
             ship.PlaceAllContainers(containers);
 
@@ -61,7 +61,7 @@ namespace UnitTests
         public void GetHalfWeightForFull4x2Ship()
         {
             Ship ship = new Ship(4, 2);
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 8, 28);
 
             ship.PlaceAllContainers(containers);
 
@@ -74,7 +74,7 @@ namespace UnitTests
         public void HalfWeightWithinBounds()
         {
             Ship ship = new Ship(4, 2);
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 8, 28);
             ship.PlaceAllContainers(containers);
             int[] halfweight = { 700, 500 };
 
