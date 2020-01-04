@@ -96,6 +96,34 @@ namespace UnitTests
             Assert.IsFalse(inbounds);
         }
 
+        [TestMethod]
+        public void NoStackAvailableOnShipGivesNull()
+        {
+            Ship ship = new Ship(3, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(5, 0, 10);
+            ship.PlaceAllContainers(containers);
+
+            // 14 x 30 = 420 weight, 1 valuable ignored.
+            Assert.AreEqual(420, ship.GetTotalWeight());
+        }
+
+        [TestMethod]
+        public void TotalContainerWeightNotInBounds()
+        {
+            bool thrown;
+            Ship ship = new Ship(3, 2);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 0, 0);
+            try
+            {
+                ship.PlaceAllContainers(containers);
+                thrown = false;
+            }
+            catch(Exception)
+            {
+                thrown = true;
+            }
+            Assert.IsTrue(thrown);
+        }
 
     }
 }

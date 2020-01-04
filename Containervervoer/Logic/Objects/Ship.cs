@@ -11,7 +11,6 @@ namespace Containervervoer.Logic.Objects
         public List<Row> rows;
         public int maxWeight;
         public int minWeight;
-        int totalContainerweight;
 
         public Ship(int length, int width)
         {
