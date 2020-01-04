@@ -18,6 +18,9 @@ namespace Containervervoer.Logic.Objects
             this.rows = new List<Row>();
             this.maxWeight = (length * width) * 150;
             this.minWeight = maxWeight / 2;
+
+            // For the length we create rows. The row's length is determined by the width of the ship.
+            // The first row is always coolable and valuable. The last row is always valuable.
             for (int i = 0; i < length; i++)
             {
                 if (i == 0)
@@ -32,17 +35,27 @@ namespace Containervervoer.Logic.Objects
                 {
                     rows.Add(new Row(width, false, false, i));
                 }
-
             }
         }
 
         public void PlaceAllContainers(List<IContainer> containers)
         {
+            // Check if the total weight of the containers is within the required bounds
             if (TotalContainerWeightPasses(containers))
             {
+                // For every container we are going to find an available stack. Based on balance, availability and container type.
+                // If there is no stack available we ignore the container and display it in the console.
                 foreach (IContainer container in containers)
                 {
-                    GetAvailableStack(container).PlaceContainer(container);
+                    Stack stack = GetAvailableStack(container);
+                    if (stack == null)
+                    {
+                        Console.WriteLine("Ignored a " + container.GetType().ToString() + " | Weight: " + container.weight + " | No spot available");
+                    }
+                    else
+                    {
+                        stack.PlaceContainer(container);
+                    }
                 }
             }
         }
@@ -98,7 +111,7 @@ namespace Containervervoer.Logic.Objects
                 }
             }
 
-            // What should we return if there is no spot available on the ship?
+            // If there is no spot available on the ship we return null. The application will display that we ignored the container because there was no spot.
             return null;
         }
 
@@ -112,6 +125,8 @@ namespace Containervervoer.Logic.Objects
             return weight;
         }
 
+        // This method returns true if the weight differences are within the required bounds.
+        // It takes the calculated weights of each half as parameter
         public bool HalfWeightsWithinBounds(int[] halfweights)
         {
             int frontWeight = halfweights[0];
@@ -136,6 +151,7 @@ namespace Containervervoer.Logic.Objects
             int backWeight = 0;
 
             double rowsDivBy2 = rows.Count / 2.0;
+            // If the amount of rows is an even number we can easily get the weights of each half.
             if (rowsDivBy2 % 1 == 0)
             {
                 for (int i = 0; i < rowsDivBy2; i++)
@@ -144,6 +160,8 @@ namespace Containervervoer.Logic.Objects
                     backWeight += rows[i + (int)rowsDivBy2].GetTotalRowWeight();
                 }
             }
+
+            // If the amount of rows is not an even number we split the total weight of the middle row and give each half of the ship a half of the weight of the middle row.
             else
             {
                 int middlerow = rows.Count / 2;
@@ -167,6 +185,7 @@ namespace Containervervoer.Logic.Objects
                 }
             }
 
+            // Return the weights so we can use them in our method that checks if the ship is in balance.
             int[] weights = { frontWeight, backWeight };
             return weights;
         }

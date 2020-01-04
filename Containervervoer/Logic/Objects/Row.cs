@@ -20,6 +20,8 @@ namespace Containervervoer.Logic.Objects
             this.isValuableRow = valuable;
             this.isCoolableRow = coolable;
             this.stacks = new List<Stack>();
+
+            // We fill the row with stacks and give them boolean values to determine if they are valuable or coolable stacks.
             for(int i = 0; i < length; i++)
             {
                 if (this.isCoolableRow == true)

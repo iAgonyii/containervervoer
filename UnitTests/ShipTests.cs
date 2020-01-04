@@ -87,7 +87,7 @@ namespace UnitTests
         public void HalfWeightNotWithinBounds()
         {
             Ship ship = new Ship(4, 2);
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 8, 28);
             ship.PlaceAllContainers(containers);
             int[] halfweight = { 100, 1100};
 
