@@ -11,7 +11,7 @@ namespace Containervervoer.Logic.Objects
         int maxWeight = 150;
         public List<IContainer> containersInStack;
         int positionInRow;
-        bool valuableContainerInStack;
+        public bool valuableContainerInStack;
         public bool isCoolableStack;
         public bool isValuableStack;
 
@@ -26,7 +26,12 @@ namespace Containervervoer.Logic.Objects
         {
             if (CanContainerBePlaced(container))
             {
+                if(container is ValuableContainer)
+                {
+                    this.valuableContainerInStack = true;
+                }
                 this.containersInStack.Add(container);
+                SortStack();
             }
         }
 
@@ -68,17 +73,24 @@ namespace Containervervoer.Logic.Objects
 
             else if(container is ValuableContainer)
             {
-                if (isCoolableStack == true)
+                if (valuableContainerInStack)
                 {
-                    return true;
-                }
-                else if (isValuableStack == true)
-                {
-                    return true;
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    if (isCoolableStack == true)
+                    {
+                        return true;
+                    }
+                    else if (isValuableStack == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
 
@@ -98,6 +110,16 @@ namespace Containervervoer.Logic.Objects
             else
             {
                 return false;
+            }
+        }
+
+        private void SortStack()
+        {
+            if (valuableContainerInStack)
+            {
+                ValuableContainer vContainer = (ValuableContainer)containersInStack.Find(v => v.allowTopStack == false);
+                this.containersInStack.Remove(vContainer);
+                this.containersInStack.Add(vContainer);
             }
         }
     }

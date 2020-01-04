@@ -21,7 +21,7 @@ namespace Containervervoer
 
             Ship ship = new Ship(length, width);
 
-            List<IContainer> containers = ContainerFactory.MakeContainers(10, 20, 10);
+            List<IContainer> containers = ContainerFactory.MakeContainers(4, 8, 18);
 
            // try
            // {

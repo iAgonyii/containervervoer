@@ -40,7 +40,7 @@ namespace Containervervoer.Logic.Objects
         {
             if (TotalContainerWeightPasses(containers))
             {
-                foreach(IContainer container in containers)
+                foreach (IContainer container in containers)
                 {
                     GetAvailableStack(container).PlaceContainer(container);
                 }
@@ -66,8 +66,10 @@ namespace Containervervoer.Logic.Objects
 
         private Stack GetAvailableStack(IContainer container)
         {
-           // if (container is CoolableContainer || HalfWeightsWithinBounds(GetHalfWeights()))
-           // {
+            // If the container is coolable we ignore balancing because they are always on the front row no matter what.
+            // If the ship is currently in balance we just find a spot for the container in the front part.
+            if (container is CoolableContainer || HalfWeightsWithinBounds(GetHalfWeights()))
+            {
                 foreach (Row row in rows)
                 {
                     foreach (Stack stack in row.stacks)
@@ -79,15 +81,22 @@ namespace Containervervoer.Logic.Objects
                     }
 
                 }
-            // }
-            // else
-            // {
-            // Search for a stack on the other half of the ship.
-
-            // Get the row with the least amount of weight and get the stack in the row with least weight
-            //Row row = rows.OrderByDescending(r => r.GetTotalRowWeight()).Last();
-            //Stack stack = row.stacks.OrderByDescending(s => s.GetTotalStackWeight()).Last();
-            // }
+            }
+            // If the ship is currently out of balance
+            else
+            {
+                //Search for a stack on the other half of the ship.
+                for (int i = rows.Count - 1; i >= 0; i--)
+                {
+                    for (int j = rows[i].stacks.Count - 1; j >= 0; j--)
+                    {
+                        if (rows[i].stacks[j].CanContainerBePlaced(container))
+                        {
+                            return rows[i].stacks[j];
+                        }
+                    }
+                }
+            }
 
             // What should we return if there is no spot available on the ship?
             return null;
@@ -111,7 +120,7 @@ namespace Containervervoer.Logic.Objects
             double frontPercentage = (double)frontWeight / (double)GetTotalWeight() * 100.0;
             double backPercentage = (double)backWeight / (double)GetTotalWeight() * 100.0;
 
-            if(frontPercentage > 60 || frontPercentage < 40 || backPercentage > 60 || backPercentage < 40)
+            if (frontPercentage > 60 || frontPercentage < 40 || backPercentage > 60 || backPercentage < 40)
             {
                 return false;
             }
@@ -119,7 +128,7 @@ namespace Containervervoer.Logic.Objects
             {
                 return true;
             }
-        } 
+        }
 
         public int[] GetHalfWeights()
         {
@@ -127,9 +136,9 @@ namespace Containervervoer.Logic.Objects
             int backWeight = 0;
 
             double rowsDivBy2 = rows.Count / 2.0;
-            if(rowsDivBy2 % 1 == 0)
+            if (rowsDivBy2 % 1 == 0)
             {
-                for(int i = 0; i < rowsDivBy2; i++)
+                for (int i = 0; i < rowsDivBy2; i++)
                 {
                     frontWeight += rows[i].GetTotalRowWeight();
                     backWeight += rows[i + (int)rowsDivBy2].GetTotalRowWeight();
@@ -140,7 +149,7 @@ namespace Containervervoer.Logic.Objects
                 int middlerow = rows.Count / 2;
                 int halfWeightOfMiddleRow = rows[middlerow].GetTotalRowWeight() / 2;
 
-                for(int i = 0; i < rows.Count; i++)
+                for (int i = 0; i < rows.Count; i++)
                 {
                     if (i == middlerow)
                     {
