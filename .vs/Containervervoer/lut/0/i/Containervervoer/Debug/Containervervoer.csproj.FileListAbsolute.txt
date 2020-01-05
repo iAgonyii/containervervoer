@@ -1,5 +1,0 @@
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\b\Containervervoer\bin\Debug\Containervervoer.exe.config
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\b\Containervervoer\bin\Debug\Containervervoer.exe
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\i\Containervervoer\Debug\Containervervoer.csproj.CoreCompileInputs.cache
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\i\Containervervoer\Debug\Containervervoer.csproj.CopyComplete
-C:\Users\iAgonyii\Documents\Skool\S2\Individueel\Algoritmiek\Containervervoer\Containervervoer\.vs\Containervervoer\lut\0\i\Containervervoer\Debug\Containervervoer.exe
