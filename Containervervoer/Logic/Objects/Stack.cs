@@ -45,6 +45,7 @@ namespace Containervervoer.Logic.Objects
             return weight;
         }
 
+        // Parent method of private checks
         public bool CanContainerBePlaced(IContainer container)
         {
             if(StackWontOverload(container) && ContainerIsSuitable(container))
@@ -100,6 +101,7 @@ namespace Containervervoer.Logic.Objects
             }
         }
 
+        // Stack won't exceed 150 tons
         private bool StackWontOverload(IContainer container)
         {
             int currentWeight = GetTotalStackWeight();
@@ -113,6 +115,7 @@ namespace Containervervoer.Logic.Objects
             }
         }
 
+        // Check if a container doensn't have over 120 stacked on top
         private bool NotTooMuchWeightOnTop(IContainer container)
         {
             for(int i = 0; i < containersInStack.Count; i++)
@@ -132,6 +135,7 @@ namespace Containervervoer.Logic.Objects
             return true;
         }
 
+        // If there is a valuable container in the stack we put it on top
         private void SortStack()
         {
             if (valuableContainerInStack)
