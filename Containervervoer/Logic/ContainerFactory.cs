@@ -46,5 +46,25 @@ namespace Containervervoer.Logic
             }
             return containers;
         }
+
+        public static List<IContainer> MakeContainersEmpty(int value, int cool, int normal)
+        {
+            Random random = new Random();
+
+            List<IContainer> containers = new List<IContainer>();
+            for (int v = 0; v < value; v++)
+            {
+                containers.Add(new ValuableContainer());
+            }
+            for (int c = 0; c < cool; c++)
+            {
+                containers.Add(new CoolableContainer());
+            }
+            for (int n = 0; n < normal; n++)
+            {
+                containers.Add(new NormalContainer());
+            }
+            return containers;
+        }
     }
 }

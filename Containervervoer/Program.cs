@@ -24,6 +24,10 @@ namespace Containervervoer
             Ship ship = new Ship(length, width);
             Console.WriteLine("Min full containers: " + ship.minWeight / 30);
             Console.WriteLine("Max full containers: " + ship.maxWeight / 30);
+            Console.WriteLine(Environment.NewLine + Environment.NewLine);
+            Console.WriteLine("Min empty containers: " + ship.minWeight / 4);
+            Console.WriteLine("Max empty containers: " + ship.maxWeight / 4);
+            Console.WriteLine(Environment.NewLine + Environment.NewLine);
             containers = MakeContainers();
 
             try
@@ -50,8 +54,24 @@ namespace Containervervoer
             int coolable = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter amount of normal containers: ");
             int normal = Convert.ToInt32(Console.ReadLine());
-
-            List<IContainer> containers = ContainerFactory.MakeContainersRandomWeights(valuable, coolable, normal);
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("Press X for full containers, Y for empty containers, Z for random weights");
+            var key = Console.ReadKey();
+            Console.WriteLine(Environment.NewLine);
+            List<IContainer> containers = new List<IContainer>();
+            if (key.Key == ConsoleKey.X)
+            {
+                containers = ContainerFactory.MakeContainers(valuable, coolable, normal);
+            }
+            if (key.Key == ConsoleKey.Y)
+            {
+                containers = ContainerFactory.MakeContainersEmpty(valuable, coolable, normal);
+            }
+            if (key.Key == ConsoleKey.Z)
+            {
+                containers = ContainerFactory.MakeContainersRandomWeights(valuable, coolable, normal);
+            }
+            
             return containers;
         }
 
