@@ -51,6 +51,7 @@
     <Compile Include="Logic\Objects\Ship.cs" />
     <Compile Include="Logic\Objects\Stack.cs" />
     <Compile Include="Logic\Objects\Container\ValuableContainer.cs" />
+    <Compile Include="Logic\VisualizerURLBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

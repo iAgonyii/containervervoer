@@ -103,7 +103,7 @@ namespace Containervervoer.Logic.Objects
         private bool StackWontOverload(IContainer container)
         {
             int currentWeight = GetTotalStackWeight();
-            if(currentWeight + container.weight <= this.maxWeight)
+            if(currentWeight + container.weight <= this.maxWeight && NotTooMuchWeightOnTop(container))
             {
                 return true;
             }
@@ -111,6 +111,25 @@ namespace Containervervoer.Logic.Objects
             {
                 return false;
             }
+        }
+
+        private bool NotTooMuchWeightOnTop(IContainer container)
+        {
+            for(int i = 0; i < containersInStack.Count; i++)
+            {
+                int topWeight = 0;
+                List<IContainer> containersOnTop = containersInStack.GetRange(i + 1, containersInStack.Count - i - 1);
+                containersOnTop.Add(container);
+                foreach(IContainer stackedContainer in containersOnTop)
+                {
+                    topWeight += stackedContainer.weight;
+                }
+                if(topWeight > 120)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void SortStack()

@@ -29,6 +29,7 @@ namespace Containervervoer
             try
             {
                 ship.PlaceAllContainers(containers);
+                Console.WriteLine(Environment.NewLine + "Visualizer URL:" + Environment.NewLine + VisualizerURLBuilder.BuildURL(ship));
             }
             catch (Exception e)
             {
@@ -38,8 +39,6 @@ namespace Containervervoer
                 System.Diagnostics.Process.Start(System.AppDomain.CurrentDomain.FriendlyName);
                 Environment.Exit(0);
             }
-
-
             Console.ReadLine();
         }
 
@@ -52,7 +51,7 @@ namespace Containervervoer
             Console.WriteLine("Enter amount of normal containers: ");
             int normal = Convert.ToInt32(Console.ReadLine());
 
-            List<IContainer> containers = ContainerFactory.MakeContainers(valuable, coolable, normal);
+            List<IContainer> containers = ContainerFactory.MakeContainersRandomWeights(valuable, coolable, normal);
             return containers;
         }
 
